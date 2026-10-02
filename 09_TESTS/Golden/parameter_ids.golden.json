@@ -1,0 +1,18 @@
+{
+  "comment": "FOUNDATION parameter ID stability contract. Every entry pins a host-visible parameter. Editable deliberately until the first public release; frozen afterwards (ADR-0003).",
+  "schemaVersion": 1,
+  "parameters": [
+    { "id": "macro1.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro2.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro3.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro4.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro5.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro6.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro7.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "macro8.value",    "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": [] },
+    { "id": "perf.character",  "versionHint": 1, "kind": "choice",     "mapping": "linear", "min": 0.0,   "max": 2.0, "default": 0.0, "automatable": true, "choices": ["Clean", "Warm", "Drive"] },
+    { "id": "perf.stereoMode", "versionHint": 1, "kind": "choice",     "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 1.0, "automatable": true, "choices": ["Mono", "Stereo"] },
+    { "id": "perf.response",   "versionHint": 1, "kind": "choice",     "mapping": "linear", "min": 0.0,   "max": 1.0, "default": 0.0, "automatable": true, "choices": ["Smooth", "Aggressive"] },
+    { "id": "output.gain",     "versionHint": 1, "kind": "continuous", "mapping": "linear", "min": -60.0, "max": 6.0, "default": 0.0, "automatable": true, "choices": [] }
+  ]
+}

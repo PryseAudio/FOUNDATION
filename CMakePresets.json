@@ -1,0 +1,79 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceParentDir}/FOUNDATION_build/${presetName}",
+      "cacheVariables": {
+        "FOUNDATION_BUILD_TESTS": "ON",
+        "FOUNDATION_BUILD_TOOLS": "ON",
+        "FOUNDATION_WARNINGS_AS_ERRORS": "ON",
+        "FOUNDATION_ENABLE_ASAN": "OFF",
+        "FOUNDATION_COPY_PLUGIN": "OFF"
+      }
+    },
+    {
+      "name": "windows-vs2026",
+      "displayName": "Windows — Visual Studio 2026 (x64)",
+      "inherits": "base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": { "value": "x64", "strategy": "set" },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "macos-xcode",
+      "displayName": "macOS — Xcode (universal arm64 + x86_64)",
+      "inherits": "base",
+      "generator": "Xcode",
+      "cacheVariables": {
+        "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "11.0"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    },
+    {
+      "name": "ci-windows",
+      "displayName": "CI — Windows (Visual Studio 2022 runner image)",
+      "inherits": "base",
+      "generator": "Visual Studio 17 2022",
+      "architecture": { "value": "x64", "strategy": "set" },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "ci-macos",
+      "displayName": "CI — macOS (Xcode, universal)",
+      "inherits": "macos-xcode"
+    }
+  ],
+  "buildPresets": [
+    { "name": "windows-debug",          "configurePreset": "windows-vs2026", "configuration": "Debug" },
+    { "name": "windows-relwithdebinfo", "configurePreset": "windows-vs2026", "configuration": "RelWithDebInfo" },
+    { "name": "windows-release",        "configurePreset": "windows-vs2026", "configuration": "Release" },
+    { "name": "macos-debug",            "configurePreset": "macos-xcode",    "configuration": "Debug" },
+    { "name": "macos-relwithdebinfo",   "configurePreset": "macos-xcode",    "configuration": "RelWithDebInfo" },
+    { "name": "macos-release",          "configurePreset": "macos-xcode",    "configuration": "Release" },
+    { "name": "ci-windows-debug",       "configurePreset": "ci-windows",     "configuration": "Debug" },
+    { "name": "ci-windows-release",     "configurePreset": "ci-windows",     "configuration": "Release" },
+    { "name": "ci-macos-debug",         "configurePreset": "ci-macos",       "configuration": "Debug" },
+    { "name": "ci-macos-release",       "configurePreset": "ci-macos",       "configuration": "Release" }
+  ],
+  "testPresets": [
+    {
+      "name": "test-base",
+      "hidden": true,
+      "output": { "outputOnFailure": true },
+      "execution": { "noTestsAction": "error", "stopOnFailure": false }
+    },
+    { "name": "windows-debug",          "inherits": "test-base", "configurePreset": "windows-vs2026", "configuration": "Debug" },
+    { "name": "windows-relwithdebinfo", "inherits": "test-base", "configurePreset": "windows-vs2026", "configuration": "RelWithDebInfo" },
+    { "name": "windows-release",        "inherits": "test-base", "configurePreset": "windows-vs2026", "configuration": "Release" },
+    { "name": "macos-debug",            "inherits": "test-base", "configurePreset": "macos-xcode",    "configuration": "Debug" },
+    { "name": "macos-release",          "inherits": "test-base", "configurePreset": "macos-xcode",    "configuration": "Release" },
+    { "name": "ci-windows-debug",       "inherits": "test-base", "configurePreset": "ci-windows",     "configuration": "Debug" },
+    { "name": "ci-windows-release",     "inherits": "test-base", "configurePreset": "ci-windows",     "configuration": "Release" },
+    { "name": "ci-macos-debug",         "inherits": "test-base", "configurePreset": "ci-macos",       "configuration": "Debug" },
+    { "name": "ci-macos-release",       "inherits": "test-base", "configurePreset": "ci-macos",       "configuration": "Release" }
+  ]
+}

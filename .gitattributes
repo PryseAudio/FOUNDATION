@@ -1,0 +1,23 @@
+# Normalise text line endings in the repository.
+* text=auto
+
+# Source and build files
+*.h       text diff=cpp
+*.hpp     text diff=cpp
+*.cpp     text diff=cpp
+*.cmake   text
+CMakeLists.txt text
+*.json    text
+*.md      text
+*.yml     text
+*.ps1     text eol=crlf
+*.sh      text eol=lf
+
+# Supplied artwork and references are binary and must never be altered by git.
+*.png     binary
+*.jpg     binary
+*.pdf     binary
+*.wav     binary
+*.mid     binary
+
+# Git LFS is added when golden audio renders first appear (Phase 1+).

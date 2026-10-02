@@ -1,0 +1,28 @@
+# FOUNDATION — generated output never lives in the source tree.
+# Configured builds go to ../FOUNDATION_build/<preset> (see CMakePresets.json).
+
+# Build output (in case a build is ever configured in-tree)
+/build/
+/out/
+/cmake-build-*/
+
+# CMake user-local configuration
+CMakeUserPresets.json
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+*.xcuserstate
+xcuserdata/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local tools (pluginval binaries etc. are never committed)
+/10_BUILD/tools/
